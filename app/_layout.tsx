@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 import OnBoarding from './(routes)/onboarding';
 import { Stack } from 'expo-router';
+import { ToastProvider } from "react-native-toast-notifications";
 
 
 
@@ -48,7 +49,7 @@ function RootLayoutNav() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
   return (
-    <>
+    <ToastProvider>
      {isLoggedIn ? (
       <view></view>
      ):(
@@ -56,12 +57,15 @@ function RootLayoutNav() {
       <Stack.Screen name ="index" />
       <Stack.Screen name ="(routes)/welcome-intro/index" />
       <Stack.Screen name="(routes)/login/index" />
+      <Stack.Screen name="(routes)/sign-up/index" />
+      <Stack.Screen name="(routes)/forgot-password/index" />
+
      </Stack>
    
 
    
   )}
-  </>
+  </ToastProvider>
   );
 
 }
